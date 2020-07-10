@@ -1,0 +1,26 @@
+.card {
+  min-height: 200px;
+  margin: 1rem;
+}
+h1 {
+  text-align: center;
+}
+.results {
+  min-height: 350px;
+   
+}
+.searchbox {
+  min-height: 350px;
+}
+header {
+  font-size: 3rem;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+.lead {
+  text-align: center;
+  
+}
