@@ -42,12 +42,18 @@ function getSearchTerm() {
 }
 
 function cityList(searchTerm) {
-    var listItems = document.createElement("li");
+    var listItems = document.createElement("button");
+    listItems.setAttribute("class", "searchPrevious");
+    listItems.addEventListener('click', function () {
+        var searchTool = $(this)[0].innerHTML;
+        searchFunction(searchTool);
+    })
+    //button.addEventListener('click', searchFunction);
     //listItems.classList.add()
     var searchTermText = searchTerm;
     listItems.textContent = searchTermText;
     var historyList = document.querySelector(".history");
-    historyList.appendChild(listItems)
+    historyList.appendChild(listItems);
     //call searchFunction here
     //searchFunction();
 };
@@ -57,9 +63,8 @@ var saveCities = function () {
 event.preventDefault();
 };
 
-function searchFunction() {
-    var searchTerm = document.querySelector('#searchCity').value
-
+function searchFunction(searchTerm) {
+ //   var searchTerm = document.querySelector('#searchCity').value
     cities.push(searchTerm)
    saveCities();
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + searchTerm + "&appid=d7de03f041d87b24110dc204b6392170"
