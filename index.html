@@ -15,76 +15,113 @@
 
 <body>
 
-    <header>
-        <h1>Weather Dashboard</h1>  
-        
+    <!-- <div class="d-flex flex-column">
+        <header>
+            <h1>Weather Dashboard</h1>
+        </header>
+        <h2 id="currentDay" class="lead"></h2>
+    </div> -->
 
-    </header>
-    <p id="currentDay" class="lead"></p>
+    <!--HERO-->
+    <section class="hero">
+        <div class="hero-cta">
+            <h1 class="header">Weather Dashboard</h1>
+            <h2 id="currentDay" class="lead"></h2>
+        </div>
+    </section>
+
+
 
     <div class="row">
-        <div class="searchbox col-12 col-lg-3 bg-dark text-light d-flex flex-column p-4 p-lg-3 m-5">
-            <div>Search for a city: <input type="text" id="searchCity" value="City" />
-                <button id="searchButton">Search!</button>
+        <div class="searchbox col-12 col-lg-3 bg-info text-light d-flex flex-column p-4 p-lg-3 m-5">
+            <div>Your city: <input type="text" id="searchCity" class="input" value="" />
+                <button id="searchButton" class="button btn-sm">Search!</button>
                 <!-- <button onclick="getSearchTerm()">Search!</button> -->
             </div>
             <!--append child history of previously searched cities-->
-            <h6>Previously Searched:<span id="previous-search"></span></h6>
+            <h6 class="text">Previously Searched:<span id="previous-search"></span></h6>
             <div id="history-container" class="list-group col-3">
-                <ul class="history">
+                <ul class="history button">
 
                 </ul>
-            </div>       
+            </div>
 
         </div>
-         <!--Container with city, date, and results-->
-         <div class="p-4 p-lg-3 m-5 col-7 bg-dark text-light results container">
-              <p id="cityName"></p>
-              <p id="date"></p>   
-              <p id= "tempHigh">High Of:</p> 
-              <p id="tempLow">Low Of:</p>
-              <p id="humidity">Humidity:</p>          
-              <p id="windSpeed">Wind Speed:</p>         
-              <p id="uvIndex">UV Index:</p>         
+        <!--Container with city, date, and results-->
+        <div class="p-4 p-lg-3 m-5 col-7 d-flex bg-info text-light flex-column hide results-container">
+            <p id="cityName"></p>
+            <p id="date"></p>
+            <p id="temp"></p>
+            <p id="humidity"></p>
+            <p id="windSpeed"></p>
+            <div>
+                <span id="uviLabel"> </span>
+                <span id="uviValue"></span>
+            </div>
+            <div class="col-2 icon">
+                <img id="icon" />
+            </div>
         </div>
         <!--cards for forecast-->
-    <div class="col-12 d-flex flex-column">
-        
-            
-        <div id="forecast-blocks" class="m-0 row">
-            
-            <div class="card col-12 col-md-6 col-xl-2 mb-3 ">
-                <h8 class="card-header">
-                    monday
-                </h8>
-            </div>
-            <div class="card col-12 col-md-6 col-xl-2 mb-3 ">
-                <h8 class="card-header">
-                    tuesday
-                </h8>
-            </div>
-            <div class="card col-12 col-md-6 col-xl-2 mb-3 ">
-                <h8 class="card-header">
-                    wednesday
-                </h8>
-            </div>
-            <div class="card col-12 col-md-6 col-xl-2 mb-3 ">
-                <h8 class="card-header">
-                    thursday
-                </h8>
-            </div>
-            <div class="card col-12 col-md-6 col-xl-2 mb-3 ">
-                <h8 class="card-header">
-                    friday
-                </h8>
+        <div class="col-12 d-flex flex-column hide m-0 row justify-space-between">
+            <h1 class="hide-forecast text-info">5 Day Forecast</h1>
+            <div id="forecast-blocks" class="m-3 row forecast-box hide">
+
+                <!-- day1 -->
+                <div class="col">
+                    <div class="day card text-light bg-info  mb-3" style="max-width: 18rem;">
+                        <h4 class="day-heading" id="day0"></h4>
+                        <div class="card-text" id="humidity0"></div>
+                        <div class="card-text" id="temperature0"></div>
+                        <img id="img0" src="" style="width: 100px">
+                    </div>
+                </div>
+                <!-- day2 -->
+                <div class="col">
+                    <div class="day card text-light bg-info  mb-3" style="max-width: 18rem;">
+                        <h4 class="day-heading" id="day1"></h4>
+                        <div id="humidity1"></div>
+                        <div id="temperature1"></div>
+                        <img id="img1" src="" style="width: 100px">
+                    </div>
+                </div>
+                <!-- day3 -->
+                <div class="col">
+                    <div class="day card text-light bg-info mb-3" style="max-width: 18rem;">
+                        <h4 class="day-heading" id="day2"></h4>
+                        <div id="humidity2"></div>
+                        <div id="temperature2"></div>
+                        <img id="img2" src="" style="width: 100px">
+                    </div>
+                </div>
+                <!-- day4 -->
+                <div class="col">
+                    <div class="day card text-light bg-info mb-3" style="max-width: 18rem;">
+                        <h4 class="day-heading" id="day3"></h4>
+                        <div id="humidity3"></div>
+                        <div id="temperature3"></div>
+                        <img id="img3" src="" style="width: 100px">
+                    </div>
+                </div>
+                <!-- day5 -->
+                <div class="col">
+                    <div class="day card text-light bg-info mb-3" style="max-width: 18rem;">
+                        <h4 class="day-heading" id="day4"></h4>
+                        <div id="humidity4"></div>
+                        <div id="temperature4"></div>
+                        <img id="img4" src="" style="width: 100px">
+                        <!-- <ul id="list-done" class="list-group list-group-flush">
+                  </ul> -->
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
 
-            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-            <script src="./assets/js/script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="./assets/js/script.js"></script>
 
 </body>
 
