@@ -161,34 +161,28 @@ var fetchForecast = function (searchTerm, dateOfWeather) {
             })
         })
 }
-var forecastDisplay = function (forecastArr) {
+//display 5-day forecast on page
+var forecastDisplay = function(forecastArr) {
     for (let index = 0; index < 5; index++) {
+        //define the area of the html we want to put that data in
         const forecast = forecastArr[index];
         const dayEl = document.getElementById("day" + index)
         const humidityEl = document.getElementById("humidity" + index)
         const temperatureEl = document.getElementById("temperature" + index)
-        const iconEl = document.getElementById("img" + index)
-        console.log("#day" + index)
-        var dayName = new Date(forecast.dt * 1000).toLocaleDateString('en-US', { date: 'numeric' })
+        //display the data on the page
+        var dayName = new Date(forecast.dt * 1000 ).toLocaleDateString('en-US', { date: 'numeric' })
         var humidity = forecast.main.humidity
         var temperature = forecast.main.temp
-        //var iconEl = forecast.weather[0].icon
         dayEl.innerHTML = dayName
         dayEl.classList.add("card-title")
         humidityEl.innerHTML = "Humidity: " + humidity + " %"
-        temperatureEl.innerHTML = "Temp: " + temperature
-
-             //forecast icons
+        temperatureEl.innerHTML = "Temp: " + temperature + " &#8457"
+        //icon element
+        const iconEl = document.getElementById("img" + index)
         //get icon for current day & display on page
         var iconCode = forecast.weather[0].icon
         var weatherIconURL = "https://openweathermap.org/img/wn/" + iconCode + ".png";
-        console.log(weatherIconURL) 
         iconEl.setAttribute("src", weatherIconURL)
-
-    //     var weatherIconAPI = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
-    //     console.log(weatherIconAPI)
-    //    iconEl.setAttribute("src", weatherIconAPI)
-
     }
 }
 function addDays(date, days) {
