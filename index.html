@@ -24,7 +24,7 @@
     </div> -->
 
     <!--HERO-->
-    <div class="col-12 d-flex flex-column">
+    <div class="col-12 d-flex flex-column sticky-top">
         <section class="hero">
             <div class="hero-cta">
                 <h1 class="header center">Weather Dashboard</h1>
@@ -37,8 +37,9 @@
 
 
     <!--Search Box-->
+
     <div class="row">
-        <div class="searchbox col-12 col-lg-3 bg-info text-light d-flex flex-column p-4 p-lg-3 m-5">
+        <div class="searchbox col-12 col-lg-3 text-light d-flex flex-column p-4 p-lg-3 m-5">
             <div>City: <input type="text" id="searchCity" class="input" value="" />
                 <button id="searchButton" class="button btn-sm"><svg width="1em" height="1em" viewBox="0 0 16 16"
                         class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -47,18 +48,17 @@
                         <path fill-rule="evenodd"
                             d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
                     </svg></button>
-                <!-- <button onclick="getSearchTerm()">Search!</button> -->
             </div>
             <!--append child history of previously searched cities-->
 
-            <h6 class="text">Previously Searched:<span id="previous-search"></span></h6>
+            <h6 class="text"><span id="previous-search"></span></h6>
             <div id="history-container" class="list-group col-3">
                 <ul class="history button">
                 </ul>
             </div>
         </div>
         <!--Container with city, date, and results-->
-        <div class="p-4 p-lg-3 m-5 col-7 d-flex bg-info text-light flex-column hide results-container">
+        <div class="p-4 p-lg-3 m-5 col-7 d-flex text-light flex-column hide results-container">
             <p id="cityName"></p>
             <p id="date"></p>
             <p id="temp"></p>
@@ -72,14 +72,15 @@
                 <img id="icon" />
             </div>
         </div>
+        </div>
         <!--cards for forecast-->
         <div class="col-12 d-flex flex-column hide m-0 row justify-space-between">
-            <h1 class="hide-forecast text-info">5 Day Forecast</h1>
+            <h1 class="hide-forecast text">5 Day Forecast</h1>
             <div id="forecast-blocks" class="m-3 row forecast-box hide">
 
                 <!-- day1 -->
                 <div class="col">
-                    <div class="day card text-light bg-info  mb-3" style="max-width: 18rem;">
+                    <div class="day card text-light  mb-3" style="max-width: 18rem;">
                         <h4 class="day-heading" id="day0"></h4>
                         <div class="card-text" id="humidity0"></div>
                         <div class="card-text" id="temperature0"></div>
@@ -90,7 +91,7 @@
                 </div>
                 <!-- day2 -->
                 <div class="col">
-                    <div class="day card text-light bg-info  mb-3" style="max-width: 18rem;">
+                    <div class="day card text-light mb-3" style="max-width: 18rem;">
                         <h4 class="day-heading" id="day1"></h4>
                         <div id="humidity1"></div>
                         <div id="temperature1"></div>
@@ -101,7 +102,7 @@
                 </div>
                 <!-- day3 -->
                 <div class="col">
-                    <div class="day card text-light bg-info mb-3" style="max-width: 18rem;">
+                    <div class="day card text-light mb-3" style="max-width: 18rem;">
                         <h4 class="day-heading" id="day2"></h4>
                         <div id="humidity2"></div>
                         <div id="temperature2"></div>
@@ -112,7 +113,7 @@
                 </div>
                 <!-- day4 -->
                 <div class="col">
-                    <div class="day card text-light bg-info mb-3" style="max-width: 18rem;">
+                    <div class="day card text-light mb-3" style="max-width: 18rem;">
                         <h4 class="day-heading" id="day3"></h4>
                         <div id="humidity3"></div>
                         <div id="temperature3"></div>
@@ -123,7 +124,7 @@
                 </div>
                 <!-- day5 -->
                 <div class="col">
-                    <div class="day card text-light bg-info mb-3" style="max-width: 18rem;">
+                    <div class="day card text-light mb-3" style="max-width: 18rem;">
                         <h4 class="day-heading" id="day4"></h4>
                         <div id="humidity4"></div>
                         <div id="temperature4"></div>
@@ -134,7 +135,7 @@
                 </div>
 
             </div>
-        </div>
+        
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
