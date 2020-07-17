@@ -77,7 +77,6 @@ function searchFunction(searchTerm) {
                 forecastContainer.classList.remove("hide")
                 forecastBox.classList.remove("hide")
                 return response.json().then(function (data) {
-                    console.log(data);
                     // --- put this data somewhere on the screen----
                     // get all the data we actually want out of the data obj assign those to variable
                     const cityName = data.name;
@@ -108,7 +107,6 @@ function searchFunction(searchTerm) {
                     tempHTML.innerHTML = "Temperature: " + Math.floor(convertedTemp) + "°F";
 
                     var weatherIconAPI = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
-                    console.log(weatherIconAPI)
                     iconHTML.setAttribute("src", weatherIconAPI)
                 })
             } else {
@@ -122,15 +120,13 @@ var fetchuvIndex = function (lat, lon) {
     //fetch uviIndex
     fetch(apiUrlIndex)
         .then(function (uviResponse) {
-            return uviResponse.json().then(function (uviData) {
-                console.log(uviData);
+            return uviResponse.json().then(function (uviData) {                
                 const uvIndex = uviData.value
                 var uvIndexDisplay = document.querySelector("#uviLabel");
                 uvIndexDisplay.innerHTML = "UV Index = ";
                 var uviValue = document.querySelector("#uviValue")
                 uviValue.innerHTML = uvIndex
                 uviValue.classList.remove("green", "yellow", "orange", "red")
-                console.log(uvIndex)
                 if (uvIndex <= 3) {
                     uviValue.classList.add("green")
                 } else if (uvIndex >= 3 && uvIndex <= 6) {
@@ -149,20 +145,18 @@ var fetchForecast = function (searchTerm, dateOfWeather) {
     fetch(apiUrlForecast)
         .then(function (forecastResponse) {
             return forecastResponse.json().then(function (forecastData) {
-                console.log(forecastData);
                 var forecastArr = []
                 for (let index = 1; index < 6; index++) {
                     const date = addDays(dateOfWeather, index).toLocaleDateString();
                     const forecast = forecastData.list.find(forecast => getLocalDate(forecast.dt) === date)
                     forecastArr.push(forecast)
-                    console.log(forecast)
                 }
                 forecastDisplay(forecastArr)
             })
         })
 }
 //display 5-day forecast on page
-var forecastDisplay = function(forecastArr) {
+var forecastDisplay = function (forecastArr) {
     for (let index = 0; index < 5; index++) {
         //define the area of the html we want to put that data in
         const forecast = forecastArr[index];
@@ -170,7 +164,7 @@ var forecastDisplay = function(forecastArr) {
         const humidityEl = document.getElementById("humidity" + index)
         const temperatureEl = document.getElementById("temperature" + index)
         //display the data on the page
-        var dayName = new Date(forecast.dt * 1000 ).toLocaleDateString('en-US', { date: 'numeric' })
+        var dayName = new Date(forecast.dt * 1000).toLocaleDateString('en-US', { date: 'numeric' })
         var humidity = forecast.main.humidity
         var temperature = forecast.main.temp
         dayEl.innerHTML = dayName
